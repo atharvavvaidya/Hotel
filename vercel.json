@@ -1,0 +1,22 @@
+{
+  "buildCommand": "cd client && yarn install && ./node_modules/vite/bin/vite.js build",
+  "outputDirectory": "client/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    },
+    {"source": "/(.*)", "destination": "/"}
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, PUT, DELETE" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
+      ]
+    }
+  ]
+}
